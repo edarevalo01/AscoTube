@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<videos>
+    <video>
+        <id>1</id>
+        <nombre>uno</nombre>
+        <titulo>Estornudo: </titulo>
+        <descripcion>Un estornudo promedio puede viajar hasta 1,5 metros, dispersando
+            miles de gérmenes. Por eso taparse la boca al estornudar no es sólo un acto de
+            mera cortesía. ¡Es muy importante!</descripcion>
+        <posx>197</posx>
+        <posy>739</posy>
+    </video>
+    <video>
+        <id>2</id>
+        <nombre>dos</nombre>
+        <titulo>Beso en un pie: </titulo>
+        <descripcion>Equivalente a un vaso entero, un pie sano produce cerca de un
+            cuarto de litro de sudor al día. Y el sudor, como otros fluidos corporales, tiende
+            a producirnos mucho asco. Nuestra creciente aversión por esa realidad animal,
+            nos ha llevado a usar productos que matan las bacterias que causan el mal olor y
+            limitan la sudoración.</descripcion>
+        <posx>1450</posx>
+        <posy>332</posy>
+    </video>
+    <video>
+        <id>3</id>
+        <nombre>tres</nombre>
+        <titulo>Alguien sacándose un moco y comiéndoselo: </titulo>
+        <descripcion>A pesar de estar llenos de
+            patógenos, al funcionar como filtros de entrada a nuestro organismo, los mocos
+            nasales son ricos en proteína y hay quienes, libres de aversiones y
+            desconociendo su poco valor nutricional, se los comen.</descripcion>
+        <posx>450</posx>
+        <posy>532</posy>
+    </video>
+    <video>
+        <id>4</id>
+        <nombre>cuatro</nombre>
+        <titulo>Video de alguien tomando sangre: </titulo>
+        <descripcion>La sangre animal es un alimento muy
+            completo dada su alta concentración de proteínas, sales minerales, grasas y
+            azúcares, y es de uso común en preparaciones alrededor del mundo. Sin
+            embargo, tomarla en grandes cantidades es peligroso pues esta sangre es
+            propensa al crecimiento bacteriano, especialmente cuando no se recolecta de
+            forma adecuada.</descripcion>
+        <posx>120</posx>
+        <posy>332</posy>
+    </video>
+    <video>
+        <id>5</id>
+        <nombre>cinco</nombre>
+        <titulo>Grano espichado: </titulo>
+        <descripcion>Hay quienes disfrutan espichándose un grano, pero esta acción
+            puede convertirse en una trampa peligrosa. Al hacerlo, dejamos expuesta una
+            herida a la acción de los microorganismos que viven en nuestra piel y en el aire,
+            abriéndole la puerta a la posibilidad de una infección.</descripcion>
+        <posx>1850</posx>
+        <posy>632</posy>
+    </video>
+    <video>
+        <id>6</id>
+        <nombre>seis</nombre>
+        <titulo>Cera de oído: </titulo>
+        <descripcion>La cera cumple un papel fundamental en la limpieza y lubricación
+            del oído y sirve de barrera contra algunas bacterias, hongos e insectos. Pero,
+            ¿sabías que la cera, a pesar de su textura, no es realmente cera?. Es una
+            combinación de secreciones del oído externo (sudor principalmente) con
+            células muertas, pelo y mugre.</descripcion>
+        <posx>950</posx>
+        <posy>212</posy>
+    </video>
+    <video>
+        <id>7</id>
+        <nombre>siete</nombre>
+        <titulo>Piojos: </titulo>
+        <descripcion>Los piojos son parásitos que, aunque no vuelan ni saltan, una vez atacan
+            nuestro cuero cabelludo son difíciles de acabar. No sólo porque una hembra
+            puede poner hasta 10 huevos diarios, sino porque sus huevos se adhieren
+            firmemente al tallo del cabello con una sustancia resistente al agua, similar al
+            pegamento.</descripcion>
+        <posx>1450</posx>
+        <posy>662</posy>
+    </video>
+    <video>
+        <id>8</id>
+        <nombre>ocho</nombre>
+        <titulo>Alguien con el pelo extremadamente grasoso y con caspa: </titulo>
+        <descripcion>La cabeza es una de
+            las zonas del cuerpo con mayor número de glándulas sebáceas. La grasa
+            excesiva en el pelo nos parece repulsiva pues tendemos a relacionarla con falta
+            de hábitos de higiene, aunque esto no siempre es así. De hecho, el exceso de
+            lavado puede remover la grasa natural del cuero cabelludo obligando al cuerpo a
+            producir más grasa.</descripcion>
+        <posx>662</posx>
+        <posy>1450</posy>
+    </video>
+    <video>
+        <id>9</id>
+        <nombre>nueve</nombre>
+        <titulo>Unos pies con las uñas muy largas y con hongos: </titulo>
+        <descripcion>Los pies mal cuidados son un
+            típico ejemplo de algo asqueroso, ya que alojan una fauna microbiana extensa y
+            muy productiva que digiere el sudor, células muertas y grasa generando el fétido
+            olor a pecueca que tanto nos asquea.</descripcion>
+        <posx>332</posx>
+        <posy>120</posy>
+    </video>
+
+</videos>
