@@ -24,22 +24,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         int consultaPermisoRead = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if (consultaPermisoRead == PackageManager.PERMISSION_DENIED){
-            Toast.makeText(this, "Permiso N_OK", Toast.LENGTH_SHORT).show();
+        if (consultaPermisoRead == PackageManager.PERMISSION_DENIED)
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, CODE_REQUEST);
-        }else {
-            Toast.makeText(this, "Permiso OKI", Toast.LENGTH_SHORT).show();
-        }
 
         int consultaPermisoWrite = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (consultaPermisoWrite == PackageManager.PERMISSION_DENIED){
-            Toast.makeText(this, "Permiso N_OK", Toast.LENGTH_SHORT).show();
+        if (consultaPermisoWrite == PackageManager.PERMISSION_DENIED)
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, CODE_REQUEST);
-        }else {
-            Toast.makeText(this, "Permiso OK", Toast.LENGTH_SHORT).show();
-        }
-
-
 
         layout_inicio = (ConstraintLayout)findViewById(R.id.layout_inicio);
         layout_inicio.setOnClickListener(new View.OnClickListener() {

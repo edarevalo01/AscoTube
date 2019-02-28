@@ -1,13 +1,11 @@
 package co.com.picolab;
 
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -23,7 +21,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
@@ -63,7 +60,7 @@ public class ContentActivity extends AppCompatActivity {
             mapImages.get(vi).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    setGif(vi);
+                    setVideo(vi);
                     //CAMBIAR TAMAÑO DE LA PUTA IMAGEN :)
                     layout_popup.setVisibility(View.VISIBLE);
                     layout_popup.setBackground(getResources().getDrawable(R.drawable.fondogif));
@@ -74,56 +71,13 @@ public class ContentActivity extends AppCompatActivity {
         }
 
     }
-    private void setGif(int id){
+    private void setVideo(int id){
         textvideo.setText(mapEntry.get(id).getDescripcion());
         File videoFile;
-        switch (id){
-            case 1:
-                videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "zelda.mp4");
-                video.setVideoURI(Uri.fromFile(videoFile));
-                video.start();
-                break;
-            case 2:
-                videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "zeldados.mp4");
-                video.setVideoURI(Uri.fromFile(videoFile));
-                video.start();
-                break;
-            case 3:
-                videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "zelda.mp4");
-                video.setVideoURI(Uri.fromFile(videoFile));
-                video.start();
-                break;
-            case 4:
-                videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "zeldados.mp4");
-                video.setVideoURI(Uri.fromFile(videoFile));
-                video.start();
-                break;
-            case 5:
-                videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "zelda.mp4");
-                video.setVideoURI(Uri.fromFile(videoFile));
-                video.start();
-                break;
-            case 6:
-                videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "zelda.mp4");
-                video.setVideoURI(Uri.fromFile(videoFile));
-                video.start();
-                break;
-            case 7:
-                videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "zelda.mp4");
-                video.setVideoURI(Uri.fromFile(videoFile));
-                video.start();
-                break;
-            case 8:
-                videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "zelda.mp4");
-                video.setVideoURI(Uri.fromFile(videoFile));
-                video.start();
-                break;
-            case 9:
-                videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "zelda.mp4");
-                video.setVideoURI(Uri.fromFile(videoFile));
-                video.start();
-                break;
-        }
+        String videoName = mapEntry.get(id).getNombre();
+        videoFile = new  File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), videoName + ".mp4");
+        video.setVideoURI(Uri.fromFile(videoFile));
+        video.start();
     }
 
     private void setImages(int size, int left, int top, ImageView img){
@@ -136,8 +90,8 @@ public class ContentActivity extends AppCompatActivity {
     private void printInfoVideos(ArrayList<Video> videos){
         for(Video video: videos){
             ImageView img = new ImageView(this);
-            Drawable mydr = setDrawable(video.getId());
-            img.setImageDrawable(mydr);
+            File mydr = new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), video.getNombre() + ".png");
+            img.setImageURI(Uri.fromFile(mydr));
             int tamano = tamanoImg(video.getPosx(), video.getPosy())/RED_TAMANO_IMG;
             setImages(tamano, video.getPosx(), video.getPosy(), img);
             mapImages.put(video.id, img);
@@ -256,19 +210,6 @@ public class ContentActivity extends AppCompatActivity {
 
     private int distance(int x, int x0, int y, int y0){
         return (int)Math.sqrt((Math.pow(x-x0,2)) + (Math.pow(y-y0,2)));
-    }
-
-    private Drawable setDrawable(int id){
-        switch (id){
-            case 1: return getResources().getDrawable(R.drawable.link);
-            case 2: return getResources().getDrawable(R.drawable.link);
-            case 3: return getResources().getDrawable(R.drawable.link);
-            case 4: return getResources().getDrawable(R.drawable.link);
-            case 5: return getResources().getDrawable(R.drawable.link);
-            case 6: return getResources().getDrawable(R.drawable.link);
-            case 7: return getResources().getDrawable(R.drawable.link);
-        }
-        return null;
     }
 
     private void parseXML(){

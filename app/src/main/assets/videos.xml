@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <videos>
+    <!--video>
+        <id>           ID de elemento
+        <nombre>       Nombre de imagen y video
+        <titulo>       Titulo de video
+        <descripcion>  Descripcion de video
+        <posx>         Posicion X inicial
+        <posy>         Posicion Y inicial
+    </video-->
     <video>
         <id>1</id>
         <nombre>uno</nombre>
@@ -24,7 +32,7 @@
     </video>
     <video>
         <id>3</id>
-        <nombre>tres</nombre>
+        <nombre>uno</nombre>
         <titulo>Alguien sacándose un moco y comiéndoselo: </titulo>
         <descripcion>A pesar de estar llenos de
             patógenos, al funcionar como filtros de entrada a nuestro organismo, los mocos
@@ -35,7 +43,7 @@
     </video>
     <video>
         <id>4</id>
-        <nombre>cuatro</nombre>
+        <nombre>dos</nombre>
         <titulo>Video de alguien tomando sangre: </titulo>
         <descripcion>La sangre animal es un alimento muy
             completo dada su alta concentración de proteínas, sales minerales, grasas y
@@ -48,7 +56,7 @@
     </video>
     <video>
         <id>5</id>
-        <nombre>cinco</nombre>
+        <nombre>uno</nombre>
         <titulo>Grano espichado: </titulo>
         <descripcion>Hay quienes disfrutan espichándose un grano, pero esta acción
             puede convertirse en una trampa peligrosa. Al hacerlo, dejamos expuesta una
@@ -59,7 +67,7 @@
     </video>
     <video>
         <id>6</id>
-        <nombre>seis</nombre>
+        <nombre>dos</nombre>
         <titulo>Cera de oído: </titulo>
         <descripcion>La cera cumple un papel fundamental en la limpieza y lubricación
             del oído y sirve de barrera contra algunas bacterias, hongos e insectos. Pero,
@@ -71,7 +79,7 @@
     </video>
     <video>
         <id>7</id>
-        <nombre>siete</nombre>
+        <nombre>uno</nombre>
         <titulo>Piojos: </titulo>
         <descripcion>Los piojos son parásitos que, aunque no vuelan ni saltan, una vez atacan
             nuestro cuero cabelludo son difíciles de acabar. No sólo porque una hembra
@@ -83,7 +91,7 @@
     </video>
     <video>
         <id>8</id>
-        <nombre>ocho</nombre>
+        <nombre>dos</nombre>
         <titulo>Alguien con el pelo extremadamente grasoso y con caspa: </titulo>
         <descripcion>La cabeza es una de
             las zonas del cuerpo con mayor número de glándulas sebáceas. La grasa
@@ -96,7 +104,7 @@
     </video>
     <video>
         <id>9</id>
-        <nombre>nueve</nombre>
+        <nombre>uno</nombre>
         <titulo>Unos pies con las uñas muy largas y con hongos: </titulo>
         <descripcion>Los pies mal cuidados son un
             típico ejemplo de algo asqueroso, ya que alojan una fauna microbiana extensa y
