@@ -43,6 +43,8 @@ public class ContentActivity extends AppCompatActivity {
     private static final int RED_TAMANO_IMG = 2;
     private static final boolean FRONTIMG = false;
     private static final int RADIO = 370;
+    private static final int CENTERX = 640;
+    private static final int CENTERY = 400;
     private int actx = -1, acty = -1; //Variables para mover objetos
     boolean popUpActivated;
 
@@ -160,9 +162,18 @@ public class ContentActivity extends AppCompatActivity {
                 int[] pos = posImg(x0, x1, y0, y1);
                 if (pos[2] < 0) {
                     for (int j = pos[0]; j < 0; j++) {
-                        if (distance(640, mapEntry.get(i).getPosx(), 400, mapEntry.get(i).getPosy()) >= RADIO) {
+                        //Movimiento hacia izquierda en eje x
+                        if (distance(CENTERX, mapEntry.get(i).getPosx(), CENTERY, mapEntry.get(i).getPosy()) >= RADIO) {
                             im.setX(mapEntry.get(i).getPosx() + 3);
                             mapEntry.get(i).setPosx((int)im.getX());
+                            if(im.getY() < 400){
+                                im.setY(mapEntry.get(i).getPosy() + 3);
+                                mapEntry.get(i).setPosy((int)im.getY());
+                            }
+                            else if(im.getY() > 400){
+                                im.setY(mapEntry.get(i).getPosy() - 3);
+                                mapEntry.get(i).setPosy((int)im.getY());
+                            }
                             mapEntry.get(i).setFrente(FRONTIMG);
                         }
                         else {
@@ -172,10 +183,18 @@ public class ContentActivity extends AppCompatActivity {
                     }
                 } else {
                     for (int j = 0; j < pos[0]; j++) {
-                        if (distance(640, mapEntry.get(i).getPosx(), 400, mapEntry.get(i).getPosy()) >= RADIO) {
-                            //1020
+                        if (distance(CENTERX, mapEntry.get(i).getPosx(), CENTERY, mapEntry.get(i).getPosy()) >= RADIO) {
+                            //Movimiento hacia derecha en eje x
                             im.setX(mapEntry.get(i).getPosx() - 3);
                             mapEntry.get(i).setPosx((int)im.getX());
+                            if(im.getY() < 400){
+                                im.setY(mapEntry.get(i).getPosy() + 3);
+                                mapEntry.get(i).setPosy((int)im.getY());
+                            }
+                            else if(im.getY() > 400){
+                                im.setY(mapEntry.get(i).getPosy() - 3);
+                                mapEntry.get(i).setPosy((int)im.getY());
+                            }
                             mapEntry.get(i).setFrente(FRONTIMG);
                         }
                         else {
@@ -186,10 +205,18 @@ public class ContentActivity extends AppCompatActivity {
                 }
                 if (pos[3] < 0) {
                     for (int j = pos[1]; j < 0; j++) {
-                        if (distance(640, mapEntry.get(i).getPosx(), 400, mapEntry.get(i).getPosy()) >= RADIO) {
-                            //20
+                        if (distance(CENTERX, mapEntry.get(i).getPosx(), CENTERY, mapEntry.get(i).getPosy()) >= RADIO) {
+                            //Movimiento hacia arriba en eje y
                             im.setY(mapEntry.get(i).getPosy() + 3);
                             mapEntry.get(i).setPosy((int)im.getY());
+                            if(im.getX() < 640){
+                                im.setX(mapEntry.get(i).getPosx() + 3);
+                                mapEntry.get(i).setPosx((int)im.getX());
+                            }
+                            else if(im.getX() > 640){
+                                im.setX(mapEntry.get(i).getPosx() - 3);
+                                mapEntry.get(i).setPosx((int)im.getX());
+                            }
                             mapEntry.get(i).setFrente(FRONTIMG);
                         }
                         else {
@@ -199,10 +226,18 @@ public class ContentActivity extends AppCompatActivity {
                     }
                 } else {
                     for (int j = 0; j < pos[1]; j++) {
-                        if (distance(640, mapEntry.get(i).getPosx(), 400, mapEntry.get(i).getPosy()) >= RADIO) {
-                            //780
+                        if (distance(CENTERX, mapEntry.get(i).getPosx(), CENTERY, mapEntry.get(i).getPosy()) >= RADIO) {
+                            //Movimiento hacia abajo en eje y
                             im.setY(mapEntry.get(i).getPosy() - 3);
                             mapEntry.get(i).setPosy((int)im.getY());
+                            if(im.getX() < 640){
+                                im.setX(mapEntry.get(i).getPosx() + 3);
+                                mapEntry.get(i).setPosx((int)im.getX());
+                            }
+                            else if(im.getX() > 640){
+                                im.setX(mapEntry.get(i).getPosx() - 3);
+                                mapEntry.get(i).setPosx((int)im.getX());
+                            }
                             mapEntry.get(i).setFrente(FRONTIMG);
                         }
                         else {
@@ -221,10 +256,18 @@ public class ContentActivity extends AppCompatActivity {
                 if (-pos[2] < 0) {
                     for (int j = 0; j < pos[0]; j++) {
                         //derecha
-                        if (distance(640, mapEntry.get(i).getPosx(), 400, mapEntry.get(i).getPosy()) >= RADIO) {
-                            //260
+                        if (distance(CENTERX, mapEntry.get(i).getPosx(), CENTERY, mapEntry.get(i).getPosy()) >= RADIO) {
+                            //Movimiento hacia derecha eje x imagen invertida
                             im.setX(mapEntry.get(i).getPosx() + 3);
                             mapEntry.get(i).setPosx((int)im.getX());
+                            if(im.getY() < 400){
+                                im.setY(mapEntry.get(i).getPosy() + 3);
+                                mapEntry.get(i).setPosy((int)im.getY());
+                            }
+                            else if(im.getY() > 400){
+                                im.setY(mapEntry.get(i).getPosy() -3);
+                                mapEntry.get(i).setPosy((int)im.getY());
+                            }
                             mapEntry.get(i).setFrente(!FRONTIMG);
                         }
                         else {
@@ -234,11 +277,19 @@ public class ContentActivity extends AppCompatActivity {
                     }
                 } else {
                     for (int j = pos[0]; j < 0; j++) {
-                        //izquierda
-                        if (distance(640, mapEntry.get(i).getPosx(), 400, mapEntry.get(i).getPosy()) >= RADIO) {
+                        //Movimiento hacia izquierda en eje x imagen invertida
+                        if (distance(CENTERX, mapEntry.get(i).getPosx(), CENTERY, mapEntry.get(i).getPosy()) >= RADIO) {
                             //1020
                             im.setX(mapEntry.get(i).getPosx() - 3);
                             mapEntry.get(i).setPosx((int)im.getX());
+                            if(im.getY() < 400){
+                                im.setY(mapEntry.get(i).getPosy() + 3);
+                                mapEntry.get(i).setPosy((int)im.getY());
+                            }
+                            else if(im.getY() > 400){
+                                im.setY(mapEntry.get(i).getPosy() -3);
+                                mapEntry.get(i).setPosy((int)im.getY());
+                            }
                             mapEntry.get(i).setFrente(!FRONTIMG);
                         }
                         else {
@@ -249,11 +300,19 @@ public class ContentActivity extends AppCompatActivity {
                 }
                 if (-pos[3] < 0) {
                     for (int j = 0; j < pos[1]; j++) {
-                        //abajo
-                        if (distance(640, mapEntry.get(i).getPosx(), 400, mapEntry.get(i).getPosy()) >= RADIO) {
+                        //Movimiento hacia abajo en eje Y imagen invertida
+                        if (distance(CENTERX, mapEntry.get(i).getPosx(), CENTERY, mapEntry.get(i).getPosy()) >= RADIO) {
                             //20
                             im.setY(mapEntry.get(i).getPosy() + 3);
                             mapEntry.get(i).setPosy((int)im.getY());
+                            if(im.getX() < 640){
+                                im.setX(mapEntry.get(i).getPosx() + 3);
+                                mapEntry.get(i).setPosx((int)im.getX());
+                            }
+                            else if(im.getX() > 640){
+                                im.setX(mapEntry.get(i).getPosx() - 3);
+                                mapEntry.get(i).setPosx((int)im.getX());
+                            }
                             mapEntry.get(i).setFrente(!FRONTIMG);
                         }
                         else {
@@ -263,11 +322,19 @@ public class ContentActivity extends AppCompatActivity {
                     }
                 } else {
                     for (int j = pos[1]; j < 0; j++) {
-                        //arriba
-                        if (distance(640, mapEntry.get(i).getPosx(), 400, mapEntry.get(i).getPosy()) >= RADIO) {
+                        //Movimiento hacia arriba en eje Y imagen invertida
+                        if (distance(CENTERX, mapEntry.get(i).getPosx(), CENTERY, mapEntry.get(i).getPosy()) >= RADIO) {
                             //780
                             im.setY(mapEntry.get(i).getPosy() - 3);
                             mapEntry.get(i).setPosy((int)im.getY());
+                            if(im.getX() < 640){
+                                im.setX(mapEntry.get(i).getPosx() + 3);
+                                mapEntry.get(i).setPosx((int)im.getX());
+                            }
+                            else if(im.getX() > 640){
+                                im.setX(mapEntry.get(i).getPosx() - 3);
+                                mapEntry.get(i).setPosx((int)im.getX());
+                            }
                             mapEntry.get(i).setFrente(!FRONTIMG);
                         }
                         else {
