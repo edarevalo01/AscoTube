@@ -12,16 +12,15 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_popup"
-        android:layout_width="445dp"
-        android:layout_height="541dp"
-        android:background="@drawable/fondogif"
-        android:layout_centerInParent="true">
+        android:layout_width="346dp"
+        android:layout_height="456dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/fondogif">
 
         <VideoView
             android:id="@+id/video"
-            android:layout_width="446dp"
-            android:layout_height="271dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="222dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,19 +30,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.52" />
 
         <TextView
             android:id="@+id/textvideo"
-            android:layout_width="391dp"
-            android:layout_height="227dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="301dp"
+            android:layout_height="154dp"
             android:text="TextView"
+            android:textAlignment="viewStart"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texttittle" />
+
+        <TextView
+            android:id="@+id/texttittle"
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/textvideo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline" />
