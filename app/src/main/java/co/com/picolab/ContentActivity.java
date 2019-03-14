@@ -1,10 +1,10 @@
 package co.com.picolab;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,10 +43,14 @@ public class ContentActivity extends AppCompatActivity {
     private static final int RED_TAMANO_IMG = 2;
     private static final boolean FRONTIMG = false;
     private static final int RADIO = 370;
-    private static final int CENTERX = 640;
-    private static final int CENTERY = 400;
+    private static final int CENTERX = 585;
+    private static final int CENTERY = 335;
     private int actx = -1, acty = -1; //Variables para mover objetos
     boolean popUpActivated;
+
+    private static final long START_TIME = 3*60*1000; //Tiempo de inactividad (los minutos se representan en el primer valor)
+    private static final long INTERVAL = 1*1000;
+    private MyCountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,7 @@ public class ContentActivity extends AppCompatActivity {
         popUpActivated = false;
 
         parseXML();
+        countDownTimer = new MyCountDownTimer(START_TIME, INTERVAL);
 
         for(final Integer vi : mapImages.keySet()){
             mapImages.get(vi).setOnClickListener(new View.OnClickListener() {
@@ -80,7 +85,7 @@ public class ContentActivity extends AppCompatActivity {
 
     /**
      * Metodo para establecer videos en el PopUp
-     * @param id id del video respecto al objeto
+     * @param id del video respecto al objeto
      */
     private void setVideo(int id){
         texttittle.setText(mapEntry.get(id).getTitulo());
@@ -95,8 +100,8 @@ public class ContentActivity extends AppCompatActivity {
     /**
      * Metodo para ubicar imagenes en el Layout
      * @param size Tamano de la imagen
-     * @param left ubicacion X
-     * @param top ubicacion Y
+     * @param left ubicacion X (posicion)
+     * @param top ubicacion Y (posicion)
      * @param img Imagen a colocar
      */
     private void setImages(int size, int left, int top, ImageView img){
@@ -108,7 +113,7 @@ public class ContentActivity extends AppCompatActivity {
 
     /**
      * Metodo para ubicar miniaturas de videos en pantalla de contenido
-     * @param videos
+     * @param videos Arreglo de videos
      */
     private void printInfoVideos(ArrayList<Video> videos){
         for(Video video: videos){
@@ -166,11 +171,11 @@ public class ContentActivity extends AppCompatActivity {
                         if (distance(CENTERX, mapEntry.get(i).getPosx(), CENTERY, mapEntry.get(i).getPosy()) >= RADIO) {
                             im.setX(mapEntry.get(i).getPosx() + 3);
                             mapEntry.get(i).setPosx((int)im.getX());
-                            if(im.getY() < 400){
+                            if(im.getY() < CENTERY){
                                 im.setY(mapEntry.get(i).getPosy() + 3);
                                 mapEntry.get(i).setPosy((int)im.getY());
                             }
-                            else if(im.getY() > 400){
+                            else if(im.getY() > CENTERY){
                                 im.setY(mapEntry.get(i).getPosy() - 3);
                                 mapEntry.get(i).setPosy((int)im.getY());
                             }
@@ -187,11 +192,11 @@ public class ContentActivity extends AppCompatActivity {
                             //Movimiento hacia derecha en eje x
                             im.setX(mapEntry.get(i).getPosx() - 3);
                             mapEntry.get(i).setPosx((int)im.getX());
-                            if(im.getY() < 400){
+                            if(im.getY() < CENTERY){
                                 im.setY(mapEntry.get(i).getPosy() + 3);
                                 mapEntry.get(i).setPosy((int)im.getY());
                             }
-                            else if(im.getY() > 400){
+                            else if(im.getY() > CENTERY){
                                 im.setY(mapEntry.get(i).getPosy() - 3);
                                 mapEntry.get(i).setPosy((int)im.getY());
                             }
@@ -209,11 +214,11 @@ public class ContentActivity extends AppCompatActivity {
                             //Movimiento hacia arriba en eje y
                             im.setY(mapEntry.get(i).getPosy() + 3);
                             mapEntry.get(i).setPosy((int)im.getY());
-                            if(im.getX() < 640){
+                            if(im.getX() < CENTERX){
                                 im.setX(mapEntry.get(i).getPosx() + 3);
                                 mapEntry.get(i).setPosx((int)im.getX());
                             }
-                            else if(im.getX() > 640){
+                            else if(im.getX() > CENTERX){
                                 im.setX(mapEntry.get(i).getPosx() - 3);
                                 mapEntry.get(i).setPosx((int)im.getX());
                             }
@@ -230,11 +235,11 @@ public class ContentActivity extends AppCompatActivity {
                             //Movimiento hacia abajo en eje y
                             im.setY(mapEntry.get(i).getPosy() - 3);
                             mapEntry.get(i).setPosy((int)im.getY());
-                            if(im.getX() < 640){
+                            if(im.getX() < CENTERX){
                                 im.setX(mapEntry.get(i).getPosx() + 3);
                                 mapEntry.get(i).setPosx((int)im.getX());
                             }
-                            else if(im.getX() > 640){
+                            else if(im.getX() > CENTERX){
                                 im.setX(mapEntry.get(i).getPosx() - 3);
                                 mapEntry.get(i).setPosx((int)im.getX());
                             }
@@ -260,11 +265,11 @@ public class ContentActivity extends AppCompatActivity {
                             //Movimiento hacia derecha eje x imagen invertida
                             im.setX(mapEntry.get(i).getPosx() + 3);
                             mapEntry.get(i).setPosx((int)im.getX());
-                            if(im.getY() < 400){
+                            if(im.getY() < CENTERY){
                                 im.setY(mapEntry.get(i).getPosy() + 3);
                                 mapEntry.get(i).setPosy((int)im.getY());
                             }
-                            else if(im.getY() > 400){
+                            else if(im.getY() > CENTERY){
                                 im.setY(mapEntry.get(i).getPosy() -3);
                                 mapEntry.get(i).setPosy((int)im.getY());
                             }
@@ -282,11 +287,11 @@ public class ContentActivity extends AppCompatActivity {
                             //1020
                             im.setX(mapEntry.get(i).getPosx() - 3);
                             mapEntry.get(i).setPosx((int)im.getX());
-                            if(im.getY() < 400){
+                            if(im.getY() < CENTERY){
                                 im.setY(mapEntry.get(i).getPosy() + 3);
                                 mapEntry.get(i).setPosy((int)im.getY());
                             }
-                            else if(im.getY() > 400){
+                            else if(im.getY() > CENTERY){
                                 im.setY(mapEntry.get(i).getPosy() -3);
                                 mapEntry.get(i).setPosy((int)im.getY());
                             }
@@ -305,11 +310,11 @@ public class ContentActivity extends AppCompatActivity {
                             //20
                             im.setY(mapEntry.get(i).getPosy() + 3);
                             mapEntry.get(i).setPosy((int)im.getY());
-                            if(im.getX() < 640){
+                            if(im.getX() < CENTERX){
                                 im.setX(mapEntry.get(i).getPosx() + 3);
                                 mapEntry.get(i).setPosx((int)im.getX());
                             }
-                            else if(im.getX() > 640){
+                            else if(im.getX() > CENTERX){
                                 im.setX(mapEntry.get(i).getPosx() - 3);
                                 mapEntry.get(i).setPosx((int)im.getX());
                             }
@@ -327,11 +332,11 @@ public class ContentActivity extends AppCompatActivity {
                             //780
                             im.setY(mapEntry.get(i).getPosy() - 3);
                             mapEntry.get(i).setPosy((int)im.getY());
-                            if(im.getX() < 640){
+                            if(im.getX() < CENTERX){
                                 im.setX(mapEntry.get(i).getPosx() + 3);
                                 mapEntry.get(i).setPosx((int)im.getX());
                             }
-                            else if(im.getX() > 640){
+                            else if(im.getX() > CENTERX){
                                 im.setX(mapEntry.get(i).getPosx() - 3);
                                 mapEntry.get(i).setPosx((int)im.getX());
                             }
@@ -488,6 +493,32 @@ public class ContentActivity extends AppCompatActivity {
             View decorView = getWindow().getDecorView();
             int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;// | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(uiOptions);
+        }
+    }
+
+    /** Metodo volver pantalla de inicio despues de incatividad */
+    @Override
+    public void onUserInteraction(){
+
+        super.onUserInteraction();
+        countDownTimer.cancel();
+        countDownTimer.start();
+    }
+
+    public class MyCountDownTimer extends CountDownTimer {
+        public MyCountDownTimer(long startTime, long interval) {
+            super(startTime, interval);
+        }
+
+        @Override
+        public void onFinish() {
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
         }
     }
 }
