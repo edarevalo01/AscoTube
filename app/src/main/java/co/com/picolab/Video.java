@@ -8,6 +8,7 @@ public class Video {
     public String descripcion;
     public int posx;
     public int posy;
+    public boolean frente;
 
     public int getId() {
         return id;
@@ -55,6 +56,14 @@ public class Video {
 
     public void setPosy(int posy) {
         this.posy = posy;
+    }
+
+    public boolean getFrente() {
+        return frente;
+    }
+
+    public void setFrente(boolean frente) {
+        this.frente = frente;
     }
 
     @Override
