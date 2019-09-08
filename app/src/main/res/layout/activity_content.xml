@@ -12,15 +12,15 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_popup"
-        android:layout_width="346dp"
-        android:layout_height="456dp"
+        android:layout_width="491dp"
+        android:layout_height="601dp"
         android:layout_centerInParent="true"
         android:background="@drawable/fondogif">
 
         <VideoView
             android:id="@+id/video"
-            android:layout_width="wrap_content"
-            android:layout_height="222dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,11 +34,12 @@
 
         <TextView
             android:id="@+id/textvideo"
-            android:layout_width="301dp"
-            android:layout_height="154dp"
+            android:layout_width="379dp"
+            android:layout_height="168dp"
             android:text="TextView"
             android:textAlignment="viewStart"
             android:textColor="@android:color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
@@ -47,14 +48,40 @@
 
         <TextView
             android:id="@+id/texttittle"
-            android:layout_width="303dp"
-            android:layout_height="wrap_content"
+            android:layout_width="379dp"
+            android:layout_height="32dp"
             android:text="TextView"
             android:textColor="@android:color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/textvideo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
+        <ImageButton
+            android:id="@+id/btn_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:onClick="expandVideo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            android:onClick="closeVideo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
     </android.support.constraint.ConstraintLayout>
+
 </RelativeLayout>

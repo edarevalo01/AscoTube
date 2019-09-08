@@ -2,6 +2,7 @@ package co.com.picolab;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -12,9 +13,11 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -35,6 +38,8 @@ public class ContentActivity extends AppCompatActivity {
     private VideoView video;
     private TextView textvideo;
     private TextView texttittle;
+    private ImageButton btn_expand;
+    private ImageButton btn_close;
 
     private FileInputStream in;
     private ArrayList<Video> videos; //Videos leidos del XML
@@ -47,6 +52,8 @@ public class ContentActivity extends AppCompatActivity {
     private static final int CENTERY = 335;
     private int actx = -1, acty = -1; //Variables para mover objetos
     boolean popUpActivated;
+    boolean isExpanded = false;
+    //MovAsincrono movimiento;
 
     private static final long START_TIME = 3*60*1000; //Tiempo de inactividad (los minutos se representan en el primer valor)
     private static final long INTERVAL = 1*1000;
@@ -62,6 +69,8 @@ public class ContentActivity extends AppCompatActivity {
         video = findViewById(R.id.video);
         textvideo = findViewById(R.id.textvideo);
         texttittle = findViewById(R.id.texttittle);
+        btn_expand = findViewById(R.id.btn_expand);
+        btn_close = findViewById(R.id.btn_close);
 
         mapImages = new TreeMap<>();
         mapEntry = new TreeMap<>();
@@ -69,6 +78,17 @@ public class ContentActivity extends AppCompatActivity {
 
         parseXML();
         countDownTimer = new MyCountDownTimer(START_TIME, INTERVAL);
+
+
+        //new MovAsincrono().execute();
+        //for (int i = 0; i < 10; i++){
+        //    movimiento = new MovAsincrono();
+        //    moveImg(585+(i*10),685+(i*10),335+(i*10),435+(i*10));
+        //    movimiento.execute();
+
+            //movimiento.onCancelled();
+        //}
+
 
         for(final Integer vi : mapImages.keySet()){
             mapImages.get(vi).setOnClickListener(new View.OnClickListener() {
@@ -82,6 +102,9 @@ public class ContentActivity extends AppCompatActivity {
             });
         }
     }
+
+
+
 
     /**
      * Metodo para establecer videos en el PopUp
@@ -129,6 +152,12 @@ public class ContentActivity extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        layout_popup.setMaxWidth(491);
+        layout_popup.setMaxHeight(601);
+        texttittle.setTextColor(getResources().getColor(R.color.white));
+        textvideo.setTextColor(getResources().getColor(R.color.white));
+        texttittle.setEnabled(true);
+        textvideo.setEnabled(true);
         video.stopPlayback();
         if(popUpActivated) {
             layout_popup.setVisibility(View.INVISIBLE);
@@ -413,6 +442,45 @@ public class ContentActivity extends AppCompatActivity {
         return (int)Math.sqrt((Math.pow(x-x0,2)) + (Math.pow(y-y0,2)));
     }
 
+    /**
+     * Metodo para Expandir el video
+     */
+    public void expandVideo(View view){
+        if(!isExpanded) {
+            layout_popup.setMaxWidth(1280);
+            layout_popup.setMaxHeight(800);
+            texttittle.setTextColor(getResources().getColor(R.color.transparent));
+            textvideo.setTextColor(getResources().getColor(R.color.transparent));
+            texttittle.setEnabled(false);
+            textvideo.setEnabled(false);
+            isExpanded = true;
+        }
+        else{
+            layout_popup.setMaxWidth(491);
+            layout_popup.setMaxHeight(601);
+            texttittle.setTextColor(getResources().getColor(R.color.white));
+            textvideo.setTextColor(getResources().getColor(R.color.white));
+            texttittle.setEnabled(true);
+            textvideo.setEnabled(true);
+            isExpanded = false;
+        }
+    }
+
+    /**
+     *Metodo para cerrar el video
+     */
+    public void closeVideo(View view){
+        layout_popup.setVisibility(View.INVISIBLE);
+        popUpActivated = false;
+        video.stopPlayback();
+        layout_popup.setMaxWidth(491);
+        layout_popup.setMaxHeight(601);
+        texttittle.setTextColor(getResources().getColor(R.color.white));
+        textvideo.setTextColor(getResources().getColor(R.color.white));
+        texttittle.setEnabled(true);
+        textvideo.setEnabled(true);
+    }
+
     /** Metodo para leer XML */
     private void parseXML(){
         XmlPullParserFactory parserFactory;
@@ -521,4 +589,55 @@ public class ContentActivity extends AppCompatActivity {
         public void onTick(long millisUntilFinished) {
         }
     }
+
+    /*public class MovAsincrono extends AsyncTask<Void, Integer, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            for(int i = 0; i < 10; i++) {
+                try {Thread.sleep(100000);
+                    /*moveImg(585, 595, 335, 345);
+                    Thread.sleep(10000000);
+                    for (int j = 0; j < 10; j++) {
+                        moveImg(585+(j*10), 685+(j*10), 335+(j*10), 435+(j*10));
+                    }
+                }
+                catch (InterruptedException e){
+                }
+
+                if(isCancelled()) break;
+            }
+            return true;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            /*while (true) {
+                moveImg(585, 595, 335, 345);
+            }
+        }
+
+        @Override
+        protected void onPreExecute() {
+            //moveImg(585,585,335,335);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            Toast.makeText(ContentActivity.this, "Movimiento finalizado", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected void onCancelled() {
+            Toast.makeText(ContentActivity.this, "Movimiento cancelado", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void tareaLarga(){
+        try {
+            //moveImg(585, 595, 335, 345);
+            Thread.sleep(1000);
+
+        }catch (InterruptedException e){}
+    }*/
 }
